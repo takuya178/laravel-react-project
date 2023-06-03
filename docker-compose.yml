@@ -13,7 +13,10 @@ services:
     container_name: laravel-react-app
     build: ./docker/php
     volumes:
+      - ./docker/php/php.ini:/usr/local/php/php.ini
       - ./src:/var/www/html
+    ports:
+      - "5173:5173"
 
   db:
     container_name: laravel-react-db
@@ -26,7 +29,7 @@ services:
     environment:
       MYSQL_DATABASE: laravel_db
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: user
+      MYSQL_USER: root
       MYSQL_PASSWORD: password
 volumes:
   laravel-react-db-volume:
